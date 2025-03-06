@@ -1,1 +1,312 @@
 # IP-Prediction-and-Geolocation-of-the-Email-Sender-under-IP-Rotation
+1.0 - Introduction
+
+The world of email communication has witnessed a significant rise in complexity and security challenges due to advancements in technology. As email systems play a crucial role in day-to-day communication for businesses and individuals alike, ensuring authenticity and security of emails has become a paramount concern. One such challenge is IP rotation, a technique used both legitimately and maliciously to mask the origin of email traffic. While legitimate applications include load balancing and improving deliverability, malicious entities use it to obscure the source of spam, phishing, or other malicious activities.
+This project is focused on leveraging machine learning to predict the actual IP address of an email sender, even in scenarios involving sophisticated IP rotation techniques. By analyzing email headers, timestamps, metadata, and sender patterns, the model aims to provide an accurate, scalable, and effective solution to this critical problem.
+
+1.1 Objective
+The primary objective of this project is to design, develop, and deploy a machine learning-based framework that predicts the original IP address of an email sender under conditions of IP rotation. Specific goals include:
+Accurate Prediction: Developing a robust model capable of handling noise, missing data, and irregular patterns in email headers.
+Enhanced Security: Enabling organizations to detect and mitigate potential email-based threats, including phishing and spoofing attacks.
+Scalability: Creating a solution that can be scaled across large email traffic datasets without compromising performance.
+User Accessibility: Developing a user-friendly interface using Streamlit to allow easy interaction with the system for analysis and predictions.
+Integration with Geolocation Services: Mapping the predicted IP address to its geographical location to provide context for analysis.
+
+1.2 Methodology Used
+This project employs a structured and iterative methodology, combining modern machine learning techniques with practical software engineering practices. The methodology is as follows:
+Data Collection and Preprocessing:
+Email headers are generated randomly to simulate real-world scenarios with IP rotation.
+Features such as time discrepancies, source IP frequencies, and originating IPs are extracted and transformed into machine-readable formats.
+Feature Engineering:
+Temporal patterns in email exchanges are analyzed to identify potential sender behaviors.
+Advanced techniques, including LSTM layers and convolutional neural networks, are used to capture both sequential and spatial features.
+Model Development:
+A hybrid architecture combining LSTM (for sequential features) and CNN (for pattern recognition) is designed.
+Inputs include features like timestamps, source IP frequencies, and metadata, which are fused to improve prediction accuracy.
+Simulation of Real-World Scenarios:
+Randomized email headers with multiple IPs in the "Received" chain are generated to mimic IP rotation.
+Variations in features such as time intervals and discrepancies are introduced to simulate noise.
+Model Training and Validation:
+The model is trained on synthetic data and validated using stratified sampling to ensure balanced evaluation across sender profiles.
+Metrics such as accuracy, precision, and recall are used for performance evaluation.
+Integration with Geolocation API:
+Predicted IPs are mapped to their geographic locations using external APIs.
+The integration provides insights into sender locations, enhancing the interpretability of results.
+User Interface Development:
+A Streamlit-based UI is created to allow users to upload email headers, run predictions, and view results interactively.
+Visualizations such as maps and bar charts provide additional insights into the data.
+Deployment:
+The solution is deployed in a scalable environment, enabling seamless usage for end users.
+
+
+
+2.0 - Technology Stack Used
+The successful implementation of the IP prediction and geolocation project relied on a robust technology stack designed to handle various aspects of data preprocessing, model training, user interface, and visualization. The selected technologies were carefully chosen to ensure scalability, flexibility, and efficiency. Below is a detailed description of the tools and frameworks used across different components of the project:
+2.1 Machine Learning Frameworks
+TensorFlow/Keras: Used for developing, training, and evaluating the machine learning model. TensorFlow's powerful API and Keras's user-friendly interface provided an excellent environment for implementing complex neural network architectures, including Bidirectional LSTMs and Conv1D layers.
+NumPy: Essential for numerical computations, data manipulation, and feature preprocessing.
+Pandas: Utilized for structured data handling, such as working with training and test datasets. It enabled seamless processing of CSV files containing information about email headers, IP addresses, and timestamps.
+2.2 Data Processing and Analysis
+Email Parsing Libraries:
+email.parser and BytesParser were employed to extract headers, Received fields, and X-Originating-IP data from raw email bytes.
+Regular expressions (via Python's re module) enabled IP extraction from headers and metadata.
+IP Address Processing:
+The ipaddress module was used for validating, normalizing, and processing IP addresses.
+collections.Counter was applied to analyze frequency distributions of IP occurrences in email headers.
+2.3 Visualization and Geolocation
+Matplotlib: Provided detailed visualizations of model inputs and outputs, as well as the distribution of sender IP addresses. Visual aids such as bar charts, pie charts, and time series graphs were generated.
+Folium: Integrated with geolocation APIs to create interactive maps, enabling users to visualize the physical locations of predicted IP addresses. This enhanced the interpretability of the project outcomes.
+2.4 Web Application Framework
+Streamlit: Used to develop an interactive and user-friendly frontend. It allowed real-time interaction with model inputs, training parameters, and prediction results, fostering a seamless user experience.
+Requests: Employed for fetching geolocation data via external APIs such as IPinfo.io.
+2.5 Backend and Deployment
+Python: Served as the primary programming language due to its extensive library support and ecosystem for machine learning, data analysis, and web application development.
+TensorFlow Serving/Streamlit Sharing: Facilitated online deployment of the application for real-time access and usability.
+
+2.1 - Three-Tier Architecture
+The project adhered to a three-tier architecture for structured development and deployment. This architecture ensured modularity, scalability, and ease of maintenance. Below is a detailed description of each tier:
+2.1.1 Presentation Tier
+The presentation tier was built using Streamlit, a lightweight and intuitive web framework. This tier acted as the user interface, allowing users to:
+Input parameters for generating synthetic training data.
+View real-time predictions of sender IPs.
+Interact with data visualizations, including charts and maps.
+Train the model using dynamically generated data with user-configurable parameters such as sample size, batch size, and epochs.
+The presentation tier was designed to be accessible from any browser, enabling non-technical users to interact seamlessly with the project.
+2.1.2 Logic Tier
+The logic tier was responsible for handling:
+Data Processing:
+Parsing email headers to extract meaningful features.
+Simulating IP rotation to generate synthetic training datasets.
+Model Training:
+Defining a hybrid neural network architecture combining LSTM for temporal features and CNN for spatial features.
+Training the model on synthetic data to classify sender IP addresses.
+Prediction Logic:
+Accepting new email headers as input.
+Processing the headers to extract features.
+Predicting the sender's IP using the trained model.
+The logic tier was implemented in Python using TensorFlow/Keras and other supporting libraries. It ensured the separation of concerns by encapsulating all computation-intensive tasks away from the presentation layer.
+2.1.3 Data Tier
+The data tier handled both static and dynamic data:
+Static Data:
+A pre-defined pool of sender IP addresses, email templates, and rotation pools for synthetic data generation.
+Dynamic Data:
+Synthetic datasets created during runtime for model training.
+Real-time predictions and geolocation data fetched from external APIs.
+The data tier also managed geolocation results obtained from IPinfo.io, ensuring efficient retrieval and integration with the visualization tools in the presentation tier.
+
+
+
+
+3.0 - Initial Setup and Research
+3.1 Understanding the Problem Domain
+The primary focus during the first week was to gain a thorough understanding of the problem statement. The project revolved around predicting the IP address of an email sender under scenarios involving IP rotation. This required an exploration of how email headers are structured, how IP rotation mechanisms work, and the challenges involved in identifying malicious behaviors or patterns. A detailed review of existing techniques and approaches in network forensics and machine learning for IP prediction was conducted.
+3.2 Literature Review
+To lay a strong foundation for the project, we reviewed existing research papers, blogs, and technical documentation related to:
+Email header analysis.
+Machine learning techniques for network forensics.
+IP rotation mechanisms and their detection.
+This literature review helped us understand the scope of the project and the gaps in current methodologies.
+3.3 Identifying Key Features
+Based on the problem understanding, we identified the following critical features from email data that could influence the prediction model:
+Source IP Frequency: Frequency of the source IPs in the received headers of emails.
+Time Between Emails: Time differences between consecutive emails to identify patterns.
+Timestamp: Timestamps of emails to analyze sender behavior.
+Time Discrepancies: Differences between email timestamps to identify anomalies.
+X-Originating-IP: The originating IP address as provided in the email headers.
+These features were chosen for their potential to capture sender behavior and anomalies under IP rotation.
+3.4 Data Collection Strategy
+A key part of Week 1 involved strategizing the data collection process. As real-world email datasets with rotation-based IP addresses are scarce, we planned to generate synthetic datasets. The dataset would include:
+Randomly generated email headers with simulated IP rotations.
+Corresponding feature values generated programmatically to represent realistic scenarios.
+We also identified publicly available datasets for email headers to validate our synthetic dataset.
+3.5 Model Research and Design
+The initial week also involved brainstorming on the model design. Since the task involved both temporal and categorical data, a hybrid approach was considered, combining:
+LSTM (Long Short-Term Memory) for temporal sequence modeling.
+CNN (Convolutional Neural Networks) for extracting high-level features from structured inputs.
+Fully connected layers to combine and process these features for final predictions.
+The goal was to develop a robust architecture that could handle diverse features and provide accurate predictions.
+3.6 Tools and Technology Stack Setup
+We set up the technology stack for the project, ensuring that all necessary tools and libraries were installed and configured. This included:
+Python: For implementing the data preprocessing pipeline and ML model.
+TensorFlow and Keras: For model building and training.
+Streamlit: To create an interactive web application for the project.
+Folium: For geolocation mapping of predicted IPs.
+Matplotlib and Pandas: For data analysis and visualization.
+3.7 Project Structure and Workflow
+The project was divided into distinct modules, including:
+Data generation and preprocessing.
+Model building and training.
+Email header feature extraction.
+Prediction and geolocation mapping.
+User interface development using Streamlit.
+A clear workflow was established, ensuring a smooth transition between tasks and modules.
+3.8 Initial Challenges and Mitigation
+Several challenges were identified during Week 1:
+Understanding Email Headers: Email headers have varying structures and complexities.
+Mitigation: Reviewed RFC standards for email headers and analyzed examples.
+Simulating IP Rotation: Generating realistic email header data with IP rotations.
+Mitigation: Designed a custom data generation pipeline to simulate rotation.
+Selecting Appropriate Models: Balancing simplicity and accuracy in model architecture.
+Mitigation: Focused on combining LSTMs for temporal patterns and CNNs for feature extraction.
+3.9 Outcome of Week 1
+By the end of the first week, we achieved the following:
+A detailed understanding of the problem statement and its nuances.
+A list of features to be extracted from email headers for prediction.
+A plan for generating synthetic datasets and validating them with real-world data.
+Initial design of the hybrid ML model combining LSTM and CNN layers.
+A fully configured development environment with all required tools and libraries.
+This laid a strong foundation for the subsequent phases of the project.
+
+
+4.0 - Model Development and Feature Engineering
+4.1 Understanding the Problem Space
+The focus for Week 2 was on developing the machine learning model and designing feature engineering strategies. Based on the project requirements, it became essential to extract meaningful patterns from email headers and rotation patterns of IP addresses. The complexity of handling structured and semi-structured data required the use of advanced feature extraction and transformation methods.
+4.2 Data Exploration and Preprocessing
+The raw email headers often included noisy and redundant information. Thus, preprocessing steps were implemented to clean the data. The steps included:
+Parsing email headers to extract critical fields like Received headers and X-Originating-IP.
+Identifying valid IPv4 addresses using regex and validating them against standard IP formats.
+Encoding categorical data such as sender IP frequency and originating IPs into numeric formats suitable for model training.
+Normalizing temporal features like time between emails and timestamps to handle scale differences.
+4.3 Feature Engineering
+Feature engineering played a pivotal role in designing an effective model. Below are the key features extracted:
+Source IP Frequency:
+Counted occurrences of each IP address in the Received headers for a given email.
+Used this frequency to create a one-hot encoded vector, indicating the likelihood of each sender.
+Time Between Emails:
+Simulated temporal data by calculating the time intervals between consecutive emails from the same sender.
+Represented as a time series to identify patterns in email dispatch behavior.
+Timestamps:
+Captured as a sequence of numerical values representing when emails were sent.
+Standardized and used to detect anomalies in sending times.
+Time Discrepancies:
+Highlighted variations in expected and actual email sending times.
+Useful for identifying spoofing attempts or rotation patterns.
+X-Originating-IP Analysis:
+Encoded as a binary vector of length equal to the total number of possible IPs (256 in this case).
+Allowed mapping to specific network addresses, aiding in sender prediction.
+4.4 Model Architecture Development
+After finalizing the feature set, we designed a hybrid deep learning model incorporating LSTM and CNN layers:
+Bidirectional LSTM Layers:
+Processed time series data such as time between emails, timestamps, and time discrepancies.
+Learned temporal dependencies and patterns that are critical in email analysis.
+CNN Layers:
+Extracted spatial patterns from binary IP vectors and source IP frequencies.
+Used convolutional layers to identify rotation patterns and relationships between IPs.
+Feature Fusion:
+Combined the outputs of LSTM and CNN layers using concatenation.
+Allowed the model to integrate temporal and spatial features for holistic decision-making.
+Dense Layers:
+Added fully connected layers to learn non-linear combinations of features.
+Incorporated dropout layers to prevent overfitting.
+Output Layer:
+Used a softmax layer to output probabilities for each sender IP.
+The model's final prediction was the IP with the highest probability.
+4.5 Training Data Simulation
+A simulated dataset was created to mimic real-world scenarios of email IP rotation. This included:
+Random IP Pool: Generated using random functions to represent diverse sender IPs.
+Synthetic Temporal Data: Designed sequences of timestamps and time intervals to emulate real email sending behavior.
+Label Assignment: Encoded sender IPs as labels for supervised learning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+5.0 - Model Training and Evaluation
+Overview of Model Training
+In the third week, the focus was primarily on training the machine learning model and evaluating its performance. This phase was crucial for refining the model’s ability to predict the sender’s IP address accurately under scenarios involving IP rotation. The training involved preparing a large dataset, configuring hyperparameters, executing training iterations, and assessing the outcomes through various performance metrics.
+
+5.1 Data Preparation for Training
+The training data comprised simulated email features generated in Week 2. The data preparation process involved the following steps:
+Feature Extraction: The extracted features, including source_ip_freq, time_between_emails, timestamp, time_discrepancies, and x_originating_ip, were converted into numerical arrays suitable for input into the model.
+One-Hot Encoding: The target variable, representing the sender's IP index, was one-hot encoded to match the softmax output layer's dimensionality.
+Data Splitting: The dataset was split into training and validation subsets with a ratio of 80:20, ensuring the model could generalize effectively to unseen data.
+
+5.2 Hyperparameter Tuning
+Hyperparameters play a significant role in determining the model's performance. Several configurations were tested during this week to identify the optimal settings. Key parameters adjusted include:
+Number of LSTM Units: Various configurations such as 64, 128, and 256 units were tested to evaluate the LSTM's capacity to capture temporal relationships.
+Learning Rate: The Adam optimizer was used with learning rates ranging from 0.001 to 0.0001 to find the most effective rate of convergence.
+Batch Size: Batch sizes of 32, 64, and 128 were experimented with to balance training speed and memory constraints.
+Dropout Rate: Dropout layers were tuned to include rates of 0.3, 0.5, and 0.7 to mitigate overfitting during training.
+
+5.3 Training Process
+The training process involved iterative updates to the model weights using the backpropagation algorithm.
+Input Data Formatting: The training data was reshaped and batched according to the model’s expected input format.
+Model Compilation: The model was compiled with the Adam optimizer, categorical cross-entropy as the loss function, and accuracy as the evaluation metric.
+Training Execution: Training was performed for 10 epochs with early stopping criteria to prevent overfitting.
+
+5.4 Evaluation Metrics
+After training, the model's performance was evaluated on the validation dataset using several metrics:
+Accuracy: The percentage of correct predictions out of total predictions, used to measure overall performance.
+Precision and Recall: Metrics to evaluate how well the model predicted a specific sender IP without false positives or negatives.
+Confusion Matrix: A matrix showcasing the true positives, false positives, true negatives, and false negatives for each sender IP.
+Loss Trends: The categorical cross-entropy loss was monitored across epochs to ensure proper convergence.
+
+5.5 Challenges Faced
+During training, the following challenges were encountered:
+Overfitting: Early iterations showed signs of overfitting on the training dataset, addressed by increasing the dropout rate and tuning the model architecture.
+Class Imbalance: Some sender IPs were underrepresented in the training data, requiring oversampling techniques to balance the dataset.
+Convergence Issues: In some configurations, the model failed to converge effectively, necessitating adjustments to the learning rate and batch size.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.0 - : Integration, Testing, and Deployment
+During the fourth and fifth weeks of the project, the focus shifted from development to integration, rigorous testing, and deployment. This phase was crucial for ensuring the system's functionality, robustness, and reliability in a real-world setting. The tasks carried out during these weeks are detailed below.
+
+6.1 Integration of Components
+In this stage, the previously developed modules were integrated into a cohesive system:
+Streamlit Application Integration: The machine learning model was incorporated into a user-friendly Streamlit web interface. Key features, such as user inputs for email headers and IP rotation simulations, were successfully linked with the backend model for predictions.
+Feature Extraction Module: The feature extraction pipeline was integrated with the Streamlit interface to process email headers provided by users. This ensured that the system could dynamically generate features, including source IP frequency, time discrepancies, and X-Originating-IP vectors, without manual intervention.
+Geolocation Service: Integration with the IP geolocation API (IPinfo) allowed the system to fetch real-time geographic data for predicted IP addresses, enhancing the utility of the application.
+Visualization Components: Data visualization functionalities, including bar charts, pie charts, and maps using Folium, were embedded within the Streamlit application. This ensured that the output was not only accurate but also interpretable for users.
+
+6.2 Testing Procedures
+Rigorous testing was conducted to identify and resolve issues, ensuring system robustness:
+Unit Testing: Each module, such as feature extraction, model prediction, and geolocation API integration, was independently tested. Edge cases, such as malformed email headers or invalid IPs, were addressed during this phase.
+Integration Testing: Once individual modules were validated, the entire pipeline was tested for seamless operation. Testing scenarios included:
+Simulated email headers with varying numbers of Received fields.
+Predictions for a diverse range of rotated IPs.
+Handling API failures gracefully, such as fallback mechanisms for geolocation services.
+Performance Testing: The model was tested for inference speed and system latency during prediction, ensuring acceptable performance even with large email datasets.
+
+6.3 Deployment
+After thorough testing, the system was prepared for deployment:
+Streamlit Sharing: The application was deployed on Streamlit Cloud, allowing easy online access for end-users. The deployment included necessary dependencies and configuration files to ensure a smooth user experience.
+Environment Setup: A Docker image was created for consistent deployment across environments. This included all required Python libraries and configurations.
+Model Packaging: The trained TensorFlow model was serialized and saved as an HDF5 file, enabling rapid loading during deployment. A backup mechanism was implemented to switch to a pre-trained model in case of failure during real-time training.
+Documentation: Comprehensive documentation was prepared for the system, detailing usage instructions, expected inputs, and troubleshooting steps for end-users.
+
+6.4 User Testing and Feedback
+The deployed system was tested by a group of beta users who simulated real-world usage scenarios. Feedback was collected on:
+Ease of Use: Users appreciated the intuitive interface and visualization capabilities.
+Accuracy: The predictions were validated against known sender IPs, achieving high accuracy in most cases.
+Areas for Improvement: Suggestions included adding a feature to upload email files directly and expanding the IP geolocation database for greater accuracy.
+
+6.5 Challenges Faced
+Several challenges were encountered during this phase, including:
+API Rate Limits: IP geolocation API rate limits required the implementation of caching mechanisms to reduce API calls for recurring IPs.
+Data Variability: Inconsistent email header formats posed challenges for feature extraction. Regular expressions were refined to accommodate diverse formats.
+Performance Optimization: Balancing the accuracy of predictions with inference time required hyperparameter tuning and optimizations in the data pipeline.
+
+6.6 Final Testing and Validation
+Before finalizing the deployment, end-to-end testing was performed using test datasets and synthetic email headers. Metrics such as prediction accuracy, latency, and geolocation accuracy were evaluated. The results demonstrated that the system met the project objectives effectively.
+This comprehensive testing and integration ensured that the system was production-ready, offering a robust solution for predicting email sender IPs under rotation and providing meaningful geolocation insights.
