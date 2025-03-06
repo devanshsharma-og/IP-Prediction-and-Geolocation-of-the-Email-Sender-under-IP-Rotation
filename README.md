@@ -42,10 +42,14 @@ The solution is deployed in a scalable environment, enabling seamless usage for 
 
 2.0 - Technology Stack Used
 The successful implementation of the IP prediction and geolocation project relied on a robust technology stack designed to handle various aspects of data preprocessing, model training, user interface, and visualization. The selected technologies were carefully chosen to ensure scalability, flexibility, and efficiency. Below is a detailed description of the tools and frameworks used across different components of the project:
+
+
 2.1 Machine Learning Frameworks
 TensorFlow/Keras: Used for developing, training, and evaluating the machine learning model. TensorFlow's powerful API and Keras's user-friendly interface provided an excellent environment for implementing complex neural network architectures, including Bidirectional LSTMs and Conv1D layers.
 NumPy: Essential for numerical computations, data manipulation, and feature preprocessing.
 Pandas: Utilized for structured data handling, such as working with training and test datasets. It enabled seamless processing of CSV files containing information about email headers, IP addresses, and timestamps.
+
+
 2.2 Data Processing and Analysis
 Email Parsing Libraries:
 email.parser and BytesParser were employed to extract headers, Received fields, and X-Originating-IP data from raw email bytes.
@@ -53,18 +57,26 @@ Regular expressions (via Python's re module) enabled IP extraction from headers 
 IP Address Processing:
 The ipaddress module was used for validating, normalizing, and processing IP addresses.
 collections.Counter was applied to analyze frequency distributions of IP occurrences in email headers.
+
+
 2.3 Visualization and Geolocation
 Matplotlib: Provided detailed visualizations of model inputs and outputs, as well as the distribution of sender IP addresses. Visual aids such as bar charts, pie charts, and time series graphs were generated.
 Folium: Integrated with geolocation APIs to create interactive maps, enabling users to visualize the physical locations of predicted IP addresses. This enhanced the interpretability of the project outcomes.
+
+
 2.4 Web Application Framework
 Streamlit: Used to develop an interactive and user-friendly frontend. It allowed real-time interaction with model inputs, training parameters, and prediction results, fostering a seamless user experience.
 Requests: Employed for fetching geolocation data via external APIs such as IPinfo.io.
+
+
 2.5 Backend and Deployment
 Python: Served as the primary programming language due to its extensive library support and ecosystem for machine learning, data analysis, and web application development.
 TensorFlow Serving/Streamlit Sharing: Facilitated online deployment of the application for real-time access and usability.
 
 2.1 - Three-Tier Architecture
 The project adhered to a three-tier architecture for structured development and deployment. This architecture ensured modularity, scalability, and ease of maintenance. Below is a detailed description of each tier:
+
+
 2.1.1 Presentation Tier
 The presentation tier was built using Streamlit, a lightweight and intuitive web framework. This tier acted as the user interface, allowing users to:
 Input parameters for generating synthetic training data.
@@ -72,6 +84,8 @@ View real-time predictions of sender IPs.
 Interact with data visualizations, including charts and maps.
 Train the model using dynamically generated data with user-configurable parameters such as sample size, batch size, and epochs.
 The presentation tier was designed to be accessible from any browser, enabling non-technical users to interact seamlessly with the project.
+
+
 2.1.2 Logic Tier
 The logic tier was responsible for handling:
 Data Processing:
@@ -85,6 +99,8 @@ Accepting new email headers as input.
 Processing the headers to extract features.
 Predicting the sender's IP using the trained model.
 The logic tier was implemented in Python using TensorFlow/Keras and other supporting libraries. It ensured the separation of concerns by encapsulating all computation-intensive tasks away from the presentation layer.
+
+
 2.1.3 Data Tier
 The data tier handled both static and dynamic data:
 Static Data:
@@ -98,14 +114,21 @@ The data tier also managed geolocation results obtained from IPinfo.io, ensuring
 
 
 3.0 - Initial Setup and Research
+
 3.1 Understanding the Problem Domain
 The primary focus during the first week was to gain a thorough understanding of the problem statement. The project revolved around predicting the IP address of an email sender under scenarios involving IP rotation. This required an exploration of how email headers are structured, how IP rotation mechanisms work, and the challenges involved in identifying malicious behaviors or patterns. A detailed review of existing techniques and approaches in network forensics and machine learning for IP prediction was conducted.
+
+
+
 3.2 Literature Review
 To lay a strong foundation for the project, we reviewed existing research papers, blogs, and technical documentation related to:
 Email header analysis.
 Machine learning techniques for network forensics.
 IP rotation mechanisms and their detection.
 This literature review helped us understand the scope of the project and the gaps in current methodologies.
+
+
+
 3.3 Identifying Key Features
 Based on the problem understanding, we identified the following critical features from email data that could influence the prediction model:
 Source IP Frequency: Frequency of the source IPs in the received headers of emails.
@@ -114,17 +137,27 @@ Timestamp: Timestamps of emails to analyze sender behavior.
 Time Discrepancies: Differences between email timestamps to identify anomalies.
 X-Originating-IP: The originating IP address as provided in the email headers.
 These features were chosen for their potential to capture sender behavior and anomalies under IP rotation.
+
+
+
+
 3.4 Data Collection Strategy
 A key part of Week 1 involved strategizing the data collection process. As real-world email datasets with rotation-based IP addresses are scarce, we planned to generate synthetic datasets. The dataset would include:
 Randomly generated email headers with simulated IP rotations.
 Corresponding feature values generated programmatically to represent realistic scenarios.
 We also identified publicly available datasets for email headers to validate our synthetic dataset.
+
+
+
 3.5 Model Research and Design
 The initial week also involved brainstorming on the model design. Since the task involved both temporal and categorical data, a hybrid approach was considered, combining:
 LSTM (Long Short-Term Memory) for temporal sequence modeling.
 CNN (Convolutional Neural Networks) for extracting high-level features from structured inputs.
 Fully connected layers to combine and process these features for final predictions.
 The goal was to develop a robust architecture that could handle diverse features and provide accurate predictions.
+
+
+
 3.6 Tools and Technology Stack Setup
 We set up the technology stack for the project, ensuring that all necessary tools and libraries were installed and configured. This included:
 Python: For implementing the data preprocessing pipeline and ML model.
@@ -132,6 +165,8 @@ TensorFlow and Keras: For model building and training.
 Streamlit: To create an interactive web application for the project.
 Folium: For geolocation mapping of predicted IPs.
 Matplotlib and Pandas: For data analysis and visualization.
+
+
 3.7 Project Structure and Workflow
 The project was divided into distinct modules, including:
 Data generation and preprocessing.
@@ -140,6 +175,9 @@ Email header feature extraction.
 Prediction and geolocation mapping.
 User interface development using Streamlit.
 A clear workflow was established, ensuring a smooth transition between tasks and modules.
+
+
+
 3.8 Initial Challenges and Mitigation
 Several challenges were identified during Week 1:
 Understanding Email Headers: Email headers have varying structures and complexities.
@@ -148,6 +186,10 @@ Simulating IP Rotation: Generating realistic email header data with IP rotations
 Mitigation: Designed a custom data generation pipeline to simulate rotation.
 Selecting Appropriate Models: Balancing simplicity and accuracy in model architecture.
 Mitigation: Focused on combining LSTMs for temporal patterns and CNNs for feature extraction.
+
+
+
+
 3.9 Outcome of Week 1
 By the end of the first week, we achieved the following:
 A detailed understanding of the problem statement and its nuances.
@@ -159,14 +201,24 @@ This laid a strong foundation for the subsequent phases of the project.
 
 
 4.0 - Model Development and Feature Engineering
+
+
+
 4.1 Understanding the Problem Space
 The focus for Week 2 was on developing the machine learning model and designing feature engineering strategies. Based on the project requirements, it became essential to extract meaningful patterns from email headers and rotation patterns of IP addresses. The complexity of handling structured and semi-structured data required the use of advanced feature extraction and transformation methods.
+
+
+
+
 4.2 Data Exploration and Preprocessing
 The raw email headers often included noisy and redundant information. Thus, preprocessing steps were implemented to clean the data. The steps included:
 Parsing email headers to extract critical fields like Received headers and X-Originating-IP.
 Identifying valid IPv4 addresses using regex and validating them against standard IP formats.
 Encoding categorical data such as sender IP frequency and originating IPs into numeric formats suitable for model training.
 Normalizing temporal features like time between emails and timestamps to handle scale differences.
+
+
+
 4.3 Feature Engineering
 Feature engineering played a pivotal role in designing an effective model. Below are the key features extracted:
 Source IP Frequency:
@@ -184,6 +236,9 @@ Useful for identifying spoofing attempts or rotation patterns.
 X-Originating-IP Analysis:
 Encoded as a binary vector of length equal to the total number of possible IPs (256 in this case).
 Allowed mapping to specific network addresses, aiding in sender prediction.
+
+
+
 4.4 Model Architecture Development
 After finalizing the feature set, we designed a hybrid deep learning model incorporating LSTM and CNN layers:
 Bidirectional LSTM Layers:
@@ -201,6 +256,10 @@ Incorporated dropout layers to prevent overfitting.
 Output Layer:
 Used a softmax layer to output probabilities for each sender IP.
 The model's final prediction was the IP with the highest probability.
+
+
+
+
 4.5 Training Data Simulation
 A simulated dataset was created to mimic real-world scenarios of email IP rotation. This included:
 Random IP Pool: Generated using random functions to represent diverse sender IPs.
