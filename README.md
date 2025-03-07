@@ -26,12 +26,12 @@ pip install -r requirements.txt
 streamlit run app.py
 
 
-1.0 - Introduction
+ # 1.0 - Introduction
 
 The world of email communication has witnessed a significant rise in complexity and security challenges due to advancements in technology. As email systems play a crucial role in day-to-day communication for businesses and individuals alike, ensuring authenticity and security of emails has become a paramount concern. One such challenge is IP rotation, a technique used both legitimately and maliciously to mask the origin of email traffic. While legitimate applications include load balancing and improving deliverability, malicious entities use it to obscure the source of spam, phishing, or other malicious activities.
 This project is focused on leveraging machine learning to predict the actual IP address of an email sender, even in scenarios involving sophisticated IP rotation techniques. By analyzing email headers, timestamps, metadata, and sender patterns, the model aims to provide an accurate, scalable, and effective solution to this critical problem.
 
-1.1 Objective
+# 1.1 Objective
 The primary objective of this project is to design, develop, and deploy a machine learning-based framework that predicts the original IP address of an email sender under conditions of IP rotation. Specific goals include:
 Accurate Prediction: Developing a robust model capable of handling noise, missing data, and irregular patterns in email headers.
 Enhanced Security: Enabling organizations to detect and mitigate potential email-based threats, including phishing and spoofing attacks.
@@ -39,7 +39,7 @@ Scalability: Creating a solution that can be scaled across large email traffic d
 User Accessibility: Developing a user-friendly interface using Streamlit to allow easy interaction with the system for analysis and predictions.
 Integration with Geolocation Services: Mapping the predicted IP address to its geographical location to provide context for analysis.
 
-1.2 Methodology Used
+# 1.2 Methodology Used
 This project employs a structured and iterative methodology, combining modern machine learning techniques with practical software engineering practices. The methodology is as follows:
 Data Collection and Preprocessing:
 Email headers are generated randomly to simulate real-world scenarios with IP rotation.
@@ -67,17 +67,17 @@ The solution is deployed in a scalable environment, enabling seamless usage for 
 
 
 
-2.0 - Technology Stack Used
+# 2.0 - Technology Stack Used
 The successful implementation of the IP prediction and geolocation project relied on a robust technology stack designed to handle various aspects of data preprocessing, model training, user interface, and visualization. The selected technologies were carefully chosen to ensure scalability, flexibility, and efficiency. Below is a detailed description of the tools and frameworks used across different components of the project:
 
 
-2.1 Machine Learning Frameworks
+# 2.1 Machine Learning Frameworks
 TensorFlow/Keras: Used for developing, training, and evaluating the machine learning model. TensorFlow's powerful API and Keras's user-friendly interface provided an excellent environment for implementing complex neural network architectures, including Bidirectional LSTMs and Conv1D layers.
 NumPy: Essential for numerical computations, data manipulation, and feature preprocessing.
 Pandas: Utilized for structured data handling, such as working with training and test datasets. It enabled seamless processing of CSV files containing information about email headers, IP addresses, and timestamps.
 
 
-2.2 Data Processing and Analysis
+# 2.2 Data Processing and Analysis
 Email Parsing Libraries:
 email.parser and BytesParser were employed to extract headers, Received fields, and X-Originating-IP data from raw email bytes.
 Regular expressions (via Python's re module) enabled IP extraction from headers and metadata.
@@ -86,25 +86,25 @@ The ipaddress module was used for validating, normalizing, and processing IP add
 collections.Counter was applied to analyze frequency distributions of IP occurrences in email headers.
 
 
-2.3 Visualization and Geolocation
+# 2.3 Visualization and Geolocation
 Matplotlib: Provided detailed visualizations of model inputs and outputs, as well as the distribution of sender IP addresses. Visual aids such as bar charts, pie charts, and time series graphs were generated.
 Folium: Integrated with geolocation APIs to create interactive maps, enabling users to visualize the physical locations of predicted IP addresses. This enhanced the interpretability of the project outcomes.
 
 
-2.4 Web Application Framework
+# 2.4 Web Application Framework
 Streamlit: Used to develop an interactive and user-friendly frontend. It allowed real-time interaction with model inputs, training parameters, and prediction results, fostering a seamless user experience.
 Requests: Employed for fetching geolocation data via external APIs such as IPinfo.io.
 
 
-2.5 Backend and Deployment
+# 2.5 Backend and Deployment
 Python: Served as the primary programming language due to its extensive library support and ecosystem for machine learning, data analysis, and web application development.
 TensorFlow Serving/Streamlit Sharing: Facilitated online deployment of the application for real-time access and usability.
 
-2.1 - Three-Tier Architecture
+# 2.1 - Three-Tier Architecture
 The project adhered to a three-tier architecture for structured development and deployment. This architecture ensured modularity, scalability, and ease of maintenance. Below is a detailed description of each tier:
 
 
-2.1.1 Presentation Tier
+# 2.1.1 Presentation Tier
 The presentation tier was built using Streamlit, a lightweight and intuitive web framework. This tier acted as the user interface, allowing users to:
 Input parameters for generating synthetic training data.
 View real-time predictions of sender IPs.
@@ -113,7 +113,7 @@ Train the model using dynamically generated data with user-configurable paramete
 The presentation tier was designed to be accessible from any browser, enabling non-technical users to interact seamlessly with the project.
 
 
-2.1.2 Logic Tier
+# 2.1.2 Logic Tier
 The logic tier was responsible for handling:
 Data Processing:
 Parsing email headers to extract meaningful features.
@@ -128,7 +128,7 @@ Predicting the sender's IP using the trained model.
 The logic tier was implemented in Python using TensorFlow/Keras and other supporting libraries. It ensured the separation of concerns by encapsulating all computation-intensive tasks away from the presentation layer.
 
 
-2.1.3 Data Tier
+# 2.1.3 Data Tier
 The data tier handled both static and dynamic data:
 Static Data:
 A pre-defined pool of sender IP addresses, email templates, and rotation pools for synthetic data generation.
@@ -140,14 +140,14 @@ The data tier also managed geolocation results obtained from IPinfo.io, ensuring
 
 
 
-3.0 - Initial Setup and Research
+# 3.0 - Initial Setup and Research
 
 3.1 Understanding the Problem Domain
 The primary focus during the first week was to gain a thorough understanding of the problem statement. The project revolved around predicting the IP address of an email sender under scenarios involving IP rotation. This required an exploration of how email headers are structured, how IP rotation mechanisms work, and the challenges involved in identifying malicious behaviors or patterns. A detailed review of existing techniques and approaches in network forensics and machine learning for IP prediction was conducted.
 
 
 
-3.2 Literature Review
+# 3.2 Literature Review
 To lay a strong foundation for the project, we reviewed existing research papers, blogs, and technical documentation related to:
 Email header analysis.
 Machine learning techniques for network forensics.
