@@ -1,0 +1,12 @@
+streamlit
+random
+numpy
+ipaddress
+email
+tensorflow
+requests
+re
+folium
+pandas
+matplotlib
+datetime

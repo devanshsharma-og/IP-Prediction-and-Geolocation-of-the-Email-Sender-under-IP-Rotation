@@ -1,0 +1,47 @@
+# modules used file
+modules_used.txt
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Virtual environment
+venv/
+env/
+*.egg-info/
+*.egg/
+
+# Streamlit session state
+*.streamlit/
+
+# TensorFlow related
+tensorflow/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE settings
+.vscode/
+.idea/
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Log files
+*.log
+
+# Temporary files
+*.swp
+*.swo
+
+# Pipenv
+Pipfile.lock
+
+# Other system-specific or editor-specific files
+*.bak
+*.swp
