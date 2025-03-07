@@ -24,8 +24,3 @@ pip install -r requirements.txt
 
 
 streamlit run app.py
-
-
-6.6 Final Testing and Validation
-Before finalizing the deployment, end-to-end testing was performed using test datasets and synthetic email headers. Metrics such as prediction accuracy, latency, and geolocation accuracy were evaluated. The results demonstrated that the system met the project objectives effectively.
-This comprehensive testing and integration ensured that the system was production-ready, offering a robust solution for predicting email sender IPs under rotation and providing meaningful geolocation insights.
