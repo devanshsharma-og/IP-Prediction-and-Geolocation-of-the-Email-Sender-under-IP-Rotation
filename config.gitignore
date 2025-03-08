@@ -13,11 +13,6 @@ env/
 *.egg-info/
 *.egg/
 
-# Streamlit session state
-*.streamlit/
-
-# TensorFlow related
-tensorflow/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
