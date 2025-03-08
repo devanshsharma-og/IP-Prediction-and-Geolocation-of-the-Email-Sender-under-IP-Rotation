@@ -32,9 +32,9 @@ if 'y_train_data' not in st.session_state:
 
 # Input section for training
 st.sidebar.subheader("Model Training Configuration")
-num_samples = st.sidebar.number_input("Number of samples to generate", min_value=1, max_value=5000, value=1000)
-epochs = st.sidebar.number_input("Number of epochs", min_value=1, max_value=100, value=10)
-batch_size = st.sidebar.number_input("Batch size", min_value=1, max_value=512, value=32)
+num_samples = st.sidebar.number_input("Number of samples to generate", min_value=1, max_value=500, value=10)
+epochs = st.sidebar.number_input("Number of epochs", min_value=1, max_value=50, value=5)
+batch_size = st.sidebar.number_input("Batch size", min_value=1, max_value=64, value=32)
 
 if st.sidebar.button("Generate and Train Model"):
     # Clear previous training data before generating new data
