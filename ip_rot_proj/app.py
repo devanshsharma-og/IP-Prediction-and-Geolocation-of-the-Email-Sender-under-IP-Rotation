@@ -38,8 +38,8 @@ batch_size = st.sidebar.number_input("Batch size", min_value=1, max_value=64, va
 
 if st.sidebar.button("Generate and Train Model"):
     # Clear previous training data before generating new data
-    st.session_state.X_train_data.clear()
-    st.session_state.y_train_data.clear()
+    st.session_state.X_train_data = []
+    st.session_state.y_train_data = []
 
     X_train_data, y_train_data = simulate_ip_rotation(num_samples, num_sender_ips, rotation_pool)
     y_train_data = tf.keras.utils.to_categorical(y_train_data, num_classes=num_sender_ips)
