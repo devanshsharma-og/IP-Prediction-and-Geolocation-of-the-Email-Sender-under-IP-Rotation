@@ -1,0 +1,9 @@
+streamlit==1.16.0
+numpy==1.21.6
+requests==2.28.1
+folium==0.12.1
+matplotlib==3.5.1
+pandas==1.5.3
+ipaddress==1.0.23
+email==6.0.0
+tensorflow==2.10.0
