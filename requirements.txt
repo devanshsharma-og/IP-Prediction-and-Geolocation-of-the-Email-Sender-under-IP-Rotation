@@ -6,5 +6,5 @@ matplotlib: 3.9.2
 pandas: 2.2.2
 ipaddress: 1.0
 Python version: 3.11.9 
-email==6.0
+email==6.0.0
 tensorflow: 2.16.2
