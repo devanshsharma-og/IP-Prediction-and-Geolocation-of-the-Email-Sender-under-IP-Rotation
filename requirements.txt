@@ -5,5 +5,5 @@ folium==0.17.0
 matplotlib==3.9.2
 pandas==2.2.2
 ipaddress==1.0.23 
-email==6.0.0
+email==6.0.0a1
 tensorflow==2.16.2
